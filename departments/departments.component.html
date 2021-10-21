@@ -1,0 +1,41 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+<form #loginForm="ngForm"
+(ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <h3><label for="username">User</label></h3>
+      <input type="username" class="form-control" id="user" 
+       placeholder="Enter User"
+       [(ngModel)]="userx.username"
+       required
+       minlength="5"
+       ngModel name="userModel" #userModel="ngModel">
+      <div class="alert alert-danger" *ngIf="userModel.touched && userModel.invalid" >
+      <div *ngIf="!userModel.valid" >User Required!</div>
+      <div *ngIf="userModel.errors?.minlength" >User min length must be {{userModel.errors?.minlength.requiredLength}} chars!</div>
+    </div>
+    </div>
+    <div class="form-group">
+        <h3><label for="password">Password</label></h3>
+      <input type="password" class="form-control" id="password" 
+      placeholder="Password"
+      [(ngModel)]="userx.password"
+       required
+       minlength="3"
+       ngModel name="passwordModel" #passwordModel="ngModel">
+      <div class="alert alert-danger" *ngIf="passwordModel.touched && passwordModel.invalid" >
+      <div *ngIf="!passwordModel.valid" >Password Required!</div>
+      <div *ngIf="passwordModel.errors?.minlength" >Password min length must be {{passwordModel.errors?.minlength.requiredLength}} chars!</div>
+    </div>
+      
+    </div><br/>
+    <button type="submit"  [disabled]="loginForm.form.invalid" 
+    class="btn btn-primary"
+    >Submit</button>
+  </form>
+  </div>
+  </div>
+
+<!-- Testing ngModel -->
+ <h2>{{userx.username}}</h2>
+ 
